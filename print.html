@@ -1,0 +1,912 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Hackeriet Documentation</title>
+        
+        <meta name="robots" content="noindex" />
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body class="light">
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            document.body.className = theme;
+            document.querySelector('html').className = theme + ' js';
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li><a href="Code-of-Conduct.html"><strong aria-hidden="true">1.</strong> Code of Conduct</a></li><li><a href="IRC-Chat.html"><strong aria-hidden="true">2.</strong> Public Chat Room (IRC)</a></li><li><a href="Membership.html"><strong aria-hidden="true">3.</strong> Membership</a></li><li><a href="Money.html"><strong aria-hidden="true">4.</strong> Payment</a></li><li><a href="CFP.html"><strong aria-hidden="true">5.</strong> Presentations and Workshops</a></li><li><a href="Donations.html"><strong aria-hidden="true">6.</strong> Financial and Hardware Donations</a></li><li><a href="Food.html"><strong aria-hidden="true">7.</strong> Nearby Restaurants and Shops</a></li><li><a href="Parking.html"><strong aria-hidden="true">8.</strong> Parking</a></li><li><a href="Waste-Disposal.html"><strong aria-hidden="true">9.</strong> Waste Disposal</a></li><li><a href="Nettlaug.html"><strong aria-hidden="true">10.</strong> Server Room</a></li><li><a href="Door.html"><strong aria-hidden="true">11.</strong> Doors and Access</a></li><li><ol class="section"><li><a href="How-to-add-a-Keycard.html"><strong aria-hidden="true">11.1.</strong> How to add a key to the door system</a></li><li><a href="How-to-reset-the-door.html"><strong aria-hidden="true">11.2.</strong> How to restart the door system</a></li></ol></li><li><a href="IP-plan.html"><strong aria-hidden="true">12.</strong> IP Plan</a></li><li><a href="Contactlist.html"><strong aria-hidden="true">13.</strong> Contact list</a></li><li><a href="Vedtekter.html"><strong aria-hidden="true">14.</strong> Bylaws</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar" class="menu-bar">
+                    <div id="menu-bar-sticky-container">
+                        <div class="left-buttons">
+                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                                <i class="fa fa-paint-brush"></i>
+                            </button>
+                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                                <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            </ul>
+                            
+                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            
+                        </div>
+
+                        <h1 class="menu-title">Hackeriet Documentation</h1>
+
+                        <div class="right-buttons">
+                            <a href="print.html" title="Print this book" aria-label="Print this book">
+                                <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#code-of-conduct" id="code-of-conduct">Code of Conduct</a></h1>
+<p>Be excellent to each other!<br />
+This is a no-assholes zone.</p>
+<p>We are a community that welcomes the alternative perspective.<br />
+We embrace the full dignity of all human beings.<br />
+As Hackeriet (in whatever space we meet, physical or online), we want to
+be able to provide a safe space for all. We welcome everyone who will
+adhere to this policy. This also means that we will actively exclude
+anyone who does not comply to this policy: we believe in freedom of
+choice, and that people should not be harassed or bullied for their
+choice, or for any other reason.</p>
+<p>Examples are how your body looks like, gender or ethnical wise, your
+level of knowledge, your cultural background or your income. We don't
+believe that anything could make a person superior to another, and will
+not tolerate harassment, bullying, sexism, racism, ableism, classism or
+any other hateful -isms at our hackerspace, or anywhere else for that
+matter.</p>
+<p>Misunderstandings and undesirable behavior do happen – when they happen;
+address them as directly, openly and respectfully as possible.<br />
+They will be handled by the board.</p>
+<p>Different people learn differently, but we sometimes might not function
+so well stand-alone. We learn in communities, from and with each other.
+Share your knowledge.<br />
+Different people do things differently. And we should not do things the
+same way. No way of doing things is better than another. We can have
+better or worse results, if tasks are completed.<br />
+Be inclusive, avoid being authoritarian, and remember: this is a
+doocracy. The difference between authoritarianism and doocracy is the
+same difference you find between expecting someone to do it &quot;your way&quot;,
+and letting the subject free to choose how to do it.</p>
+<p>Whatever it is we are trying to do, let's do it together, that is often
+a good choice.<br />
+Have fun: that is the best motivation to do things.</p>
+<p>Trial and error should be the preferred method, as &quot;heterodoxy&quot; might
+bring unexpectedly positive results. Results may vary, but learning is
+always a good result. Any result coming for getting things done is more
+important than the quality itself of the work done, but remember: there
+is no result before you get it done.</p>
+<p>Hackerspaces are member-run places, nothing happens on its own and
+therefore you are expected to contribute.<br />
+Your opinion is not enough. Offer your help.</p>
+<p>Go also out and invite people, and be inclusive.<br />
+Give people the same amount of power above the space you think you
+have.<br />
+Let people take the amount of responsibility they would like to have.<br />
+Let people engage freely. Let people have fun.</p>
+<p>With power, comes responsibility. To delegate power though, is not to
+delegate responsibility, we don't do politics.<br />
+Sharing is caring. Don't let anyone take too much responsibility.<br />
+No one has no responsibilities.</p>
+<p>Clean up, organize a workshop. Look for things that need fixing and
+don't wait for anyone else to fix them for you.<br />
+Improvement is what we should always aim at. As a Hackerspace and as
+people.</p>
+<p>Be excellent.<br />
+Help others be excellent their own way.</p>
+<h1><a class="header" href="#irc" id="irc">IRC</a></h1>
+<p>IRC is an open chat protocol which we are using actively to share and stay in touch with each other. If you don't have any experience using it someone at the space will be happy to help you get started.</p>
+<p>Sometimes it may seem like everyone in the room is having conversations you're not a part of. It might just be they are.</p>
+<h3><a class="header" href="#connection-details" id="connection-details">Connection details</a></h3>
+<pre><code>Server: chat.freenode.org 
+Port: 6667, 6697 (SSL)
+Channel: #oslohackerspace
+</code></pre>
+<h3><a class="header" href="#connect-using-a-web-browser" id="connect-using-a-web-browser">Connect using a web browser</a></h3>
+<p>Use the web chat. Be patient. It might take hours for someone to react to your question. </p>
+<p>Either <a href="https://riot.im/app/#/room/#freenode_#oslohackerspace:matrix.org">connect via Matrix with Riot.im</a> or use the <a href="https://webchat.freenode.net/?channels=%23oslohackerspace">webchat at freenode.net</a>.</p>
+<h1><a class="header" href="#hackeriet-membership" id="hackeriet-membership">Hackeriet membership</a></h1>
+<p>Hackeriet is a members-owned non-profit association. Members have a hand
+in the running of the organisation as well as 24/7 access to the space.</p>
+<p>Membership is paid monthly by standing order. Running an organisation
+like this in Oslo isn't cheap, so please play your dues on time. The
+space requires our members to contribute an average subscription of
+kr250/month to survive. For students, retirees or low income members the
+minimum subscription is kr 150/month.</p>
+<h2><a class="header" href="#membership-dues" id="membership-dues">Membership dues</a></h2>
+<ul>
+<li>Regular members: 250kr monthly</li>
+<li>Students : 150kr monthly</li>
+<li>Sponsorship membership: as much as you wish. Our suggestion is
+500kr/mo</li>
+</ul>
+<p>Pay by bank transfer to account number <strong>1254.05.75124</strong> and mark the
+transaction with your name.</p>
+<p>Supporting membership is for those who wish to support Hackeriet's
+activities financially. We can provide invoices for supporting members
+upon request. Contact finance - AT - hackeriet.no.</p>
+<h2><a class="header" href="#who-can-be-a-member" id="who-can-be-a-member">Who can be a member?</a></h2>
+<ul>
+<li>anyone with an active interest in hacking - in the wider sense</li>
+</ul>
+<h2><a class="header" href="#what-to-do-as-a-new-member" id="what-to-do-as-a-new-member">What to do as a new member?</a></h2>
+<ul>
+<li>come up with a good nickname for yourself</li>
+<li>jump on our IRC server, because that's where the buzz is (
+#oslohackerspace @ chat.freenode.net and matrix.org ). Consider
+following up 24/7 in a shell/muxer!</li>
+<li>get a membership card and a key to the building. Don't be shy, you
+should get those ASAP.</li>
+<li>come and use the space whenever you have time and will, you don't
+need anyone to do it.</li>
+<li>put a server or a pi in the [[nettlaug]] server room and get
+your dedicated IP-address.</li>
+<li>get inspiration / hydration as beer and Club Mate from the
+[[vending machine]].</li>
+<li>show up in person on Tuesdays and Saturdays, bring your laptop and
+whatever else you might want.</li>
+<li>arrange a talk - tell us about something you care about.</li>
+<li>host a workshop: show us something you can do, or something new
+you'd like to figure out together with others.</li>
+<li>organize an event of other nature. e.g. show a movie, organize a
+hackaton/CTF, play music on the stage... - It's your call!</li>
+</ul>
+<h3><a class="header" href="#what-do-i-get-for-the-fee--what-is-my-membership-fee-used-for" id="what-do-i-get-for-the-fee--what-is-my-membership-fee-used-for">What do I get for the fee / What is my membership fee used for?</a></h3>
+<p>Hackeriet exists for us to pool our resources, exchange experiences, let
+us teach and learn, share equipment and offer us a physical place to
+hang out together. To achieve this, we need funding.</p>
+<p>The membership fee is our primary source of funding and is currently
+used to pay rent, fund workshops and buy equipment that the members find
+useful at a hackerspace.</p>
+<p>While we encourage you to become a member, we don't require you to be
+one in order to visit us. Please drop by and see how it looks :)</p>
+<h3><a class="header" href="#full-members-get" id="full-members-get">Full members get</a></h3>
+<ul>
+<li>Their own storage space where you can store your project stuff.</li>
+<li>Voting rights at the general assembly meetings, as stated in our
+bylaws ([[Vedtekter]]).</li>
+<li>Right to participate in membership meetings, first Tuesday of every
+month.</li>
+<li>Membership card for unlocking doors and purchasing Club Mate from
+the vending machine all by yourself!</li>
+</ul>
+<h1><a class="header" href="#keys" id="keys">Keys</a></h1>
+<p>You need two keys:</p>
+<ul>
+<li>a key card, which opens the space itself, and</li>
+</ul>
+<!-- -->
+<ul>
+<li>a Hausmania key, which opens many doors at Hausmania, including the
+front door (at least until someone (<strong>you?</strong>) build more keycard
+stations).</li>
+</ul>
+<p>We produce our own keycards, but need to order the Hausmania keys.</p>
+<p>Email styret - AT - hackeriet.no and request a key, and we will order
+one for you. There is a 600kr deposit for keys, deposit is paid by bank
+transfer to Hackeriets main account (see [[Money]]).</p>
+<h1><a class="header" href="#payments" id="payments">Payments</a></h1>
+<p>Hackeriets accounts</p>
+<p><strong>NB: For membership payments, please mark the payment note with your name or nick and &quot;member&quot;</strong></p>
+<p>Membership dues can be found on the <a href="./Membership.html">membership info page</a></p>
+<pre><code>Main &amp; membership dues:  1254.05.75124
+Nettlaug:                1254.62.08964
+Bar og iZettle:          1254.62.08972 (Vipps: 577659)
+Cabaret/events:          1254.62.08980
+</code></pre>
+<h2><a class="header" href="#places-to-ask-for-grants" id="places-to-ask-for-grants">Places to ask for grants</a></h2>
+<ul>
+<li><a href="http://sparebankstiftelsen.no/">Sparebankstiftelsen DNB</a></li>
+<li><a href="http://frifond.no/">Frifond</a></li>
+<li><a href="http://www.kulturradet.no/kan-eg-fa-stotte">Kulturrådet</a></li>
+<li><a href="http://www.frittord.no/">Fritt-ord</a></li>
+<li><a href="http://www.gjensidigestiftelsen.no/no/sok-stotte">Gjensidigestiftelsen</a></li>
+<li><a href="https://www.oslo.kommune.no/politikk-og-administrasjon/tilskudd-legater-og-stipend/frivillig-arbeid/frivillighetsmidler-i-bydel-grunerlokka/">Bydel Grünerløkka</a></li>
+<li><a href="https://skandiabanken.no/ideer-for-livet/om-ideer-for-livet1/">Ideer for livet - (Skandiabanken)</a></li>
+</ul>
+<h1><a class="header" href="#call-for-participation" id="call-for-participation">Call for participation</a></h1>
+<p>A hacker's mind is always looking for cool new things to learn, thus
+Hackeriet is always looking for interesting talks and workshops.</p>
+<p>Are you working on a cool project and would like to show it off or
+discuss some problems you encountered? <strong>Tell us about it!</strong></p>
+<p>Do you have a pet peeve and would like to hold a presentation and/or
+discussion about it? Let us know!</p>
+<p>Do you have knowledge you would like to share? <strong>We'll help you to set up
+a workshop!</strong></p>
+<p>Are you interested in a particular topic and would like to attend a talk
+or workshop about it, please ask, maybe someone knows someone who can
+teach us all!</p>
+<p>Are you looking for collaborators for your project? We'll broadcast it
+and arrange a themed afternoon or evening!</p>
+<p>Do you know what your hacker friends and colleagues are working on? Ask
+them if they'd be interested in telling us about it!</p>
+<p>And last but not least, a looming presentation deadline can be a great
+motivation to research a particular topic. We'd be happy to set that
+deadline for you!</p>
+<p>Hackeriet is what YOU make it! And remember, you don't have to be a
+super-skilled uber-expert to have valuable knowledge to share!</p>
+<h2><a class="header" href="#contact-us" id="contact-us">Contact us</a></h2>
+<ul>
+<li>Email: <a href="mailto:post@hackeriet.no">post@hackeriet.no</a> or join the mailinglist</li>
+<li>IRC: <a href="irc://irc.freenode.net/#oslohackerspace">#oslohackerspace</a> on <a href="http://freenode.net/irc_servers.shtml">Freenode</a>. Or use the <a href="http://webchat.freenode.net?channels=oslohackerspace&amp;uio=d4">webchat</a>.</li>
+<li>Twitter: <a href="https://twitter.com/#!/hackeriet">@hackeriet</a></li>
+<li>Meatspace: Just come see us at our regular meetings <a href="https://www.meetup.com/hackeriet/">Tuesdays/Saturdays</a></li>
+</ul>
+<h1><a class="header" href="#donations" id="donations">Donations</a></h1>
+<h2><a class="header" href="#financial" id="financial">Financial</a></h2>
+<p>Main account number:  1254.05.75124</p>
+<p>Please mark the payment with &quot;Donation&quot;.</p>
+<h2><a class="header" href="#hardware" id="hardware">Hardware</a></h2>
+<p>Hackeriet has contacts in the IT industry, and from time to time we are
+donated some equipment.</p>
+<h3><a class="header" href="#guidelines" id="guidelines">Guidelines</a></h3>
+<p>For anything not on the &quot;we would like&quot; list, the general rule is that
+you or another Hackeriet member has some concrete and immediate project
+in mind for the hardware.</p>
+<p>The principle behind this is that stuff inevitably ends up sitting
+around cluttering, and it takes more energy to get rid of stuff than to
+aquire it.</p>
+<h3><a class="header" href="#what-we-have" id="what-we-have">What we have</a></h3>
+<ul>
+<li>1U and 2U servers</li>
+<li>two full-sized racks</li>
+<li>power distribution units</li>
+<li>wifi access points</li>
+<li>two blade centers</li>
+</ul>
+<h3><a class="header" href="#what-we-would-like" id="what-we-would-like">What we would like</a></h3>
+<ul>
+<li>1U and 2U servers (modern, perhaps 2 or 3 generations older than
+current)</li>
+<li>NUC's and other lowpower server equipment</li>
+<li>laptops</li>
+<li>stage equipment (microphones, backline, DI-boxes etc)</li>
+<li>networking gear: routers, switches, network cards etc.</li>
+<li>a working UPS with some battery life</li>
+<li>cooling equipment (like AC's)</li>
+</ul>
+<p>In addition, we will take donations for any interesting or useful tools
+or hardware, but in practice &quot;nice to have&quot;-stuff without a project
+isn't, while people who bring stuff with they intend on making a project
+out of are most welcome!</p>
+<p>Please contact us if you think you have something that might be of
+interest (and use) for hackers and geeks.</p>
+<h3><a class="header" href="#what-we-cant-accept" id="what-we-cant-accept">What we can't accept</a></h3>
+<ul>
+<li>CRT screens or &lt;22&quot; LCD panels</li>
+<li>old desktop hardware</li>
+<li>broken electronics (home amplifiers etc)</li>
+</ul>
+<h1><a class="header" href="#food" id="food">Food</a></h1>
+<p>Hackers need to eat. Here are some suggestions of places to get food near Hackeriet.</p>
+<ul>
+<li>The closest convenience store is Kiwi and it's is upen until 23:00. Yum.</li>
+<li>The indian place up at Maridalsveien is quite good. Main dishes are 160-170 NOK. 20-25 minutes prep time on takeaway. +47 22201248. http://rdtandoori.com/st.html</li>
+<li>Asian place in Møllergata is fast and cheap. Main dishes 110-130NOK.</li>
+<li>Funky Fresh Foods @ DogA, Hausmannsgate 16. One of the best places for vegan food in Oslo. http://www.funkyfreshfoods.no/</li>
+<li>Gourmet thai corner of Rosteds gate &amp; Fredensborgveien. Great thai curry. Dishes around 100NOK. http://gourmetthai.no/</li>
+<li>Sushi on corner of Rosted gate and Deichmans gate. Prices vary but not the most expensive sushi in the city.</li>
+<li>Pizza place across the street next to Kiwi. Pizzas, kebabs and falafels. They bake their own bread and pizza dough. 90-150NOK</li>
+<li>Freddy Fuego has nice burritos. They serve meat, veggie and vegan styles. 90-150NOK depending on choices.</li>
+<li>Peloton, a bar/café, has both normal and vegan pizza, coffee, and homemade ice cream at Torggata 35. https://www.pelotonbar.no/</li>
+<li>There is an ethiopian place in Møllergata. Meat, veggie and vegan food. Around 150-200kr. https://www.oslohakunamatata.com/</li>
+</ul>
+<h2><a class="header" href="#tips" id="tips">Tips</a></h2>
+<ul>
+<li>Never buy the fake chocolate chip cookies from Rema or Kiwi. </li>
+</ul>
+<h1><a class="header" href="#parking" id="parking">Parking</a></h1>
+<p>Our location at Hausmania, whilst in the middle of the city centre,
+makes parking (for cars) a bit difficult.</p>
+<p>Some hints:</p>
+<ul>
+<li>On the weekends and after 17:00, you can park in Møllergata.</li>
+<li>Behind Vega Scene, in front of the entry gate to Hausmania's back
+yard, it is possible to park for shorter periods of time. Make sure
+not to block any entrances, and consider safe passage for goods
+delivery trucks.</li>
+<li>If you have a Hausmania key, it is possible to park (temporarily) in
+the back yard. The gate is locked with the front door key.</li>
+</ul>
+<p>There are some different <a href="https://www.oslo.kommune.no/gate-transport-og-parkering/parkering/kart/">state managed maps</a> over available parking spaces. Among the maps are free MC parking spots
+and places to charge your electric vehicle.</p>
+<h1><a class="header" href="#waste-disposal" id="waste-disposal">Waste disposal</a></h1>
+<p>For the waste our members and visitors produce, we have four different buckets in the space we use for rough sorting. These cans needs regular emptying by our members.</p>
+<ul>
+<li>Mixed</li>
+<li>Recyclable bottles and cans (with pant)</li>
+<li>Plastics</li>
+<li>Paper</li>
+</ul>
+<p>In Hausmania's backyard, there are larger containers where we can take out our bins. Additionally there is a container for glass and metal containers where we can take out our empty Club Mate glass bottles. It's nice if we do this on a regular basis, to avoid filling the container up for the rest of the house's tenants.</p>
+<p>For electronic waste, we've used to fill up our basement. We would like to avoid this in the future, so we rather collect a little hump of waste and wait until one or more of our members take it out to one of the waste disposal sites in the region.</p>
+<h1><a class="header" href="#nettlaug" id="nettlaug">Nettlaug</a></h1>
+<p>Nettlauget is a subgroup within Hackeriet that provide server hosting for participating members. We also run the network; manage ethernet switches, routers and such.</p>
+<img style="float: right;" src="https://hackeriet.no/images/nettlaug/IMG_20141028_215110.jpg" width=40%>
+<p>Pr August 2019 the montly fee is:</p>
+<ul>
+<li>nok 350,- for 1 server with power consumption &gt; 50W</li>
+<li>nok 150,- for 1 server with power consumption &lt;= 50W</li>
+<li>nok 50,- for a Raspberry Pi (or similar hardware)</li>
+</ul>
+<p>You get rackspace, a (global) IPv4-address, a <code>/48</code> IPv6 subnet, and access to our internet connection. You have to be a member of Hackeriet to be a part of the Nettlaug.</p>
+<p>Nettlauget is not only responsible for the internet connection of Hackeriet, but also Hausmania and H40. We run all the switches, routers and other fun networking stuff. If you think this sounds like fun, join us!</p>
+<img src="https://hackeriet.no/images/nettlaug/IMG_20150124_200254.jpg" width=40%>
+<h1><a class="header" href="#system-door-lock" id="system-door-lock">System Door Lock</a></h1>
+<p>System Design Objectives:</p>
+<ul>
+<li>Tamper and sabotage resistant</li>
+<li>Cheaply, easily sourced and quickly interchangable parts.</li>
+<li>Semi-decentralized. Network attached.</li>
+</ul>
+<h2><a class="header" href="#overview" id="overview">Overview</a></h2>
+<p>Raspberry Pi's with Raspbian, relays, strike locks and RFID/NFC readers.</p>
+<h2><a class="header" href="#status" id="status">Status</a></h2>
+<p>Pi operates relay and NFC readers and opens the strike lock through GPIO
+pins with shell scripts.</p>
+<p>See the <a href="https://github.com/hackeriet/door">door repo</a> for more
+information.</p>
+<h2><a class="header" href="#documentation" id="documentation">Documentation</a></h2>
+<ul>
+<li><a href="How-to-add-a-Keycard.html">How to add a key to the door system</a></li>
+<li><a href="How-to-reset-the-door.html">How to restart the door system</a></li>
+</ul>
+<h2><a class="header" href="#further-work" id="further-work">Further work</a></h2>
+<ul>
+<li>http://dx.com/p/contactless-smart-id-card-reader-black-143889</li>
+<li>http://www.seeedstudio.com/wiki/index.php?title=13.56Mhz_RFID_module_\-<em>IOS/IEC_14443_type</em></li>
+</ul>
+<h1><a class="header" href="#how-to-add-keys-to-the-humla-doorbot" id="how-to-add-keys-to-the-humla-doorbot">How to add keys to the Humla doorbot</a></h1>
+<h2><a class="header" href="#adding-a-keycard" id="adding-a-keycard">Adding a keycard</a></h2>
+<ol>
+<li>Log in to humladoor: <code>ssh pi@humladoor</code></li>
+<li>look at logfile for door: <code>tail -f /var/log/door.log</code></li>
+<li>swipe the card you wish to add</li>
+<li>copy the full card number from the console output into
+<code>/home/pi/users/$username</code></li>
+</ol>
+<p>The first numbers should match the numbers printed on the card. The last
+number doesn't match the one on the card. The leading zeroes should not be included!</p>
+<h2><a class="header" href="#adding-an-ssh-key" id="adding-an-ssh-key">Adding an ssh key</a></h2>
+<p>You can use ssh to open the door, for instance from your cell phone or
+laptop.
+This happens automatically if you put your ssh key into the lock.</p>
+<p>It's also a practical way of letting someone in remotely.</p>
+<ol>
+<li>Log in to humladoor: <code>ssh pi@humladoor</code></li>
+<li>Get root: <code>sudo -i</code></li>
+<li>Switch directories: <code>cd ~humla</code></li>
+<li>Paste your ssh key at the end of the authorized keys file <code>vim .ssh/authorized\_keys</code></li>
+</ol>
+<p>Now you can open the lock with</p>
+<pre><code>ssh humla@humladoor
+</code></pre>
+<h1><a class="header" href="#how-to-restart-the-doorsystem" id="how-to-restart-the-doorsystem">How to restart the doorsystem</a></h1>
+<p>The doorservice is now installed as a daemon and should get started on
+boot. Use regular &quot;service&quot; commands to start, stop, restart og check
+status.</p>
+<pre><code>    root@humladoor:~# service door start
+    [ ok ] Starting system door daemon:.
+
+    root@humladoor:~# service door stop
+    [ ok ] Stopping system door daemon:.
+
+    root@humladoor:~# service door restart
+    [....] Stopping system door daemon:start\-stop\-daemon: warning: failed to kill 2449: No such process
+    No process in pidfile '/var/run/door.pid' found running; none killed.
+     failed!
+    [ ok ] Starting system door daemon:.
+
+    root@humladoor:~# service door status
+    [ ok ] /usr/local/bin/door.sh is running.
+</code></pre>
+<p>Other usefull files for making changes:</p>
+<ul>
+<li><code>/etc/init.d./door</code></li>
+</ul>
+<h1><a class="header" href="#ip-plan" id="ip-plan">IP plan</a></h1>
+<h2><a class="header" href="#log" id="log">Log</a></h2>
+<pre><code>6 jan 2019: ONLINE AGAIN - IP plan moved to &lt;https://ip.hackeriet.no/&gt;
+
+PM kfh@freenode if you need the login password (temporary solution until
+management pw is in hackerpass).
+
+5 oct 2018: fikset problemer med nettet innover i gangen: (1.) det var
+en annen DHCP server (192.168.0.0/24) på en av kablingspunktene. denne
+kabelen ble identifisert og merket med en firkant grå sølvtape. (2.)
+satt opp ett aksesspunt med en unify g/n jeg fant på labben.
+aksesspunktet (hausmania) ble satt på samme fysiske sted som et defunct
+privat aksesspunkt (AirlinkNNNNN), på 1 etasje, innerst til høyre. (3.)
+ekstra 5 porter svitsj ble tapet til veggen TODO: optimalisére vekk.
+
+sept 2018: (currently offline) IP plan moved to
+&lt;https://ip.hackeriet.no/&gt; PM kfh@freenode if you need the login
+password. (but ip.hackeriet.no crashed during power utage sept 2018, so
+this is currently offline)
+
+29 sept 2018: switch innover i gangen byttet ut med dum 16 port switch
+kablet rett til vlan10 så folk kommer på nett. (ikke alle kabler er
+koblet til). den gamle switchen laget rare viftelyder og blinket rødt,
+denne er skrudd av men er fortsatt på stedet.
+</code></pre>
+<h2><a class="header" href="#ip-list" id="ip-list">IP list</a></h2>
+<p>This is the authoritative list of how/what is using the IPv4-adresses we
+routed to us.</p>
+<h3><a class="header" href="#vlan2--10102124--no-ipv6--hausmaniaadm--broken-no-router-" id="vlan2--10102124--no-ipv6--hausmaniaadm--broken-no-router-">vlan2 | 10.10.2.1/24 | no ipv6 | hausmania,adm | BROKEN, no router! |</a></h3>
+<p>Previously called &quot;kontor&quot;, repurposed for anything official/non-tenant
+business of Hausmania.</p>
+<h3><a class="header" href="#vlan3--10103124--2a02ed063164--wiredhackeriet--moon-" id="vlan3--10103124--2a02ed063164--wiredhackeriet--moon-">vlan3 | 10.10.3.1/24 | 2a02:ed06:3::1/64 | wired,hackeriet | moon |</a></h3>
+<pre><code>  10.10.3.10   no ipv6                   johan.hackeriet.no                   canon printer
+  10.10.3.11   no ipv6                   ottman.hackeriet.no                  xerox phaser printer
+  10.10.3.15   no ipv6                   hackeriet-door                       &quot;Source code repo&quot;:https://github.com/hackeriet/door
+  10.10.3.16   dhcp6                     hackeriet-button.haus.hackeriet.no   space status button pi (eth fallback)
+  10.10.3.17   dhcp6                     hackeriet-button.haus.hackeriet.no   space status button pi (wlan)
+  10.10.3.20   no ipv6                   dc-ap1                               access point, possibly physically on vlan130. hackeriet / hackeriet mgmt pw.
+  10.10.3.21   2001:16d8:eee2:3::21      razor.hackeriet.no                   (SDR station)
+  10.10.3.22   2a02:ed06:3::10:10:3:22   -                                    vend-lcd (LCD screen on vending machine)
+  on dhcpv4    autoconf ipv6 (in DNS)    vending.hackeriet.no                 
+</code></pre>
+<h3><a class="header" href="#vlan10--101010124--2a02ed0610164--hausmaniatenants--moon-" id="vlan10--101010124--2a02ed0610164--hausmaniatenants--moon-">vlan10 | 10.10.10.1/24 | 2a02:ed06:10::1/64 | hausmania,tenants | moon |</a></h3>
+<p>The wired network used by Hausmania tenants. Sometimes available over
+Wifi as well.</p>
+<h3><a class="header" href="#vlan20--10020124--2a02ed0620164--hausmaniainfra--pit-sw-" id="vlan20--10020124--2a02ed0620164--hausmaniainfra--pit-sw-">vlan20 | 10.0.20.1/24 | 2a02:ed06:20::1/64 | hausmania,infra | pit-sw |</a></h3>
+<p>VLAN for units tied to the building itself. (doors, access points,
+related infrastructure)</p>
+<pre><code>  on dhcp   no   ap,hackeriet   unifi managed
+  on dhcp   no   ap,serverrom   unifi managed
+</code></pre>
+<p>DHCPv4 running on pit-sw handing out 10.0.20.50-254. (configured, but
+untested per 2017-10-14)</p>
+<h3><a class="header" href="#vlan23--10023124--2a02ed0623164--mgmt--pit-sw-" id="vlan23--10023124--2a02ed0623164--mgmt--pit-sw-">vlan23 | 10.0.23.1/24 | 2a02:ed06:23::1/64 | mgmt | pit-sw |</a></h3>
+<p>This network is used for management of infrastructure like switches,
+routers and similar. No bmc/ipmi hosts, those live on vlan 230 below.</p>
+<pre><code>  10.0.23.3    no   hackeriet-sw                                                            (Catalyst 2960G) nettlaug@ / hauspw
+  10.0.23.5    no   haus-core-sw                                                            (Catalyst 2960G) nettlaug@, hauspw. in the basement.
+  10.0.23.6    no   haus-4etg-sw                                                            (Procurve 2626 J4900B) manager / hauspw. forth floor by door to room 1405.
+  10.0.23.8    ?    haus-3etg-sw                                                            third floor by door to room 1309. (not in place yet)
+  10.0.23.9    no   haus-musikk-sw                                                          (J8164A) hallway outside https://hackeriet.no/hausrom/2102.html , between musikk and hvite brakker.
+  10.0.23.10   no   haus-2etg-sw                                                            (Procurve 2626 / J4900B) Outside https://hackeriet.no/hausrom/1209.html 2nd floor, outside Mons' room/capoeira room
+  10.0.23.11   no   hack-tor1-sw                                                            admin / adminpw. at top of rack one, brocade fcx648
+  10.0.23.12   ?    unconfigured. apc power distribution unit. admin / hackeriet mgmt pw.
+  10.0.23.13   ?    hackeriet-ap1. (tidl. humla1130ap\\-1)                                  admin / hackeriet mgmt pw.
+  10.0.23.14   no   pit-sw                                                                  Cisco 3560E nettlaug / hackeriet mgmt pw.
+  10.0.23.15   no   brocade-sw                                                              testsvitsj
+  10.0.23.16   no   hole-sw (lo0)                                                           Cisco 3560
+</code></pre>
+<h3><a class="header" href="#vlan25--10025024--2a02ed0625164--wlanpublichaus--pit-sw-" id="vlan25--10025024--2a02ed0625164--wlanpublichaus--pit-sw-">vlan25 | 10.0.25.0/24 | 2a02:ed06:25::1/64 | wlan,public,haus | pit-sw |</a></h3>
+<p>Not in use. No IPv4 NAT anywhere.</p>
+<h3><a class="header" href="#vlan130--1853520219226--2a02ed0664--srvhackeriet--pit-sw-" id="vlan130--1853520219226--2a02ed0664--srvhackeriet--pit-sw-">vlan130 | 185.35.202.192/26 | 2a02:ed06::/64 | srv,hackeriet | pit-sw |</a></h3>
+<pre><code>  185.35.202.194                    2a02:ed06::194                                                                 adrianf (guleadrian)
+  185.35.202.195                    2a02:ed06::1000                                                                mynt.hackeriet.no (zulu, lasse)
+  185.35.202.196                    2a02:ed06::196                                                                 plague.hackeriet.no (lafa)
+  185.35.202.197                    2a02:ed06::197                                                                 nux.hackerietno ([nixops](https://github.com/hackeriet/nixops), sgo)
+  182.35.202.198                    2a02:ed06::198                                                                 ip.hackeriet.no (kfh)
+  185.35.202.199                    ...                                                                            mulder vm (atluxity)
+  185.35.202.200                    2a02:ed06::200                                                                 tepewqukumatz.hackeriet.no (huayra)
+  185.35.202.201                    2a02:ed06::201                                                                 bane.hackeriet.no (atluxity)
+  185.35.202.202                    2a02:ed06::202                                                                 blade.hackeriet.no
+  185.35.202.203                    2a02:ed06::203                                                                 host003.hackeriet.no (capitol)
+  185.35.202.204                    2a02:ed06::204                                                                 tone2.hackeriet.no (capitol)
+  185.35.202.205                    2a02:ed06::205                                                                 cereal.hackeriet.no (comotion)
+  185.35.202.206                    2a02:ed06::206                                                                 hyperboria.hackeriet.no (sgo)
+  185.35.202.207                    2a02:ed06::207                                                                 ns1.hackeriet.no (sjn)
+  185.35.202.208                    2a02:ed06::208                                                                 foo.hackeriet.no (sjn)
+  185.35.202.209                    2a02:ed06::209                                                                 henrik.hackeriet.no (capitol)
+  185.35.202.210                    2a02:ed06::210                                                                 mas (lasse)
+  185.35.202.211                    2a02:ed06::211                                                                 sshow.hackeriet.no (sshow)
+  185.35.202.212                    2a02:ed06::212                                                                 nat64.hackeriet.no (capitol)
+  185.35.202.213                    2a02:ed06::face:b00k                                                           ldap002.hackeriet.no (capitol)
+  185.35.202.214                    2a02:ed06::214 2a02:ed06::f00b:39ff:fec5:9585 2a02:ed06::f00b:39ff:fec5:9586   login.hackeriet.no (bezaban)
+  185.35.202.215                    2a02:ed06::215 og 2a02:ed06:beef:beef::1                                       vpn.hackeriet.no (head)
+  185.35.202.216                    2a02:ed06::216                                                                 konrad.hackeriet.no (kbeckmann)
+  185.35.202.217                    2a02:ed06::217                                                                 pris.hackeriet.no (fnords)
+  182.35.202.218                    2a02:ed06::218                                                                 sgo
+  185.35.202.219                    2a02:ed06::119 2a02:ed06::4b6f:f144:35db:7605                                  saturn.hackeriet.no (bezaban)
+  185.35.202.220                    2a02:ed06::202                                                                 gitlab.hackeriet.no (var: host001.hackeriet.no (capitol), 2a02:ed06::2312)
+  185.35.202.221                    2a02:ed06::221                                                                 tor-node001.hackeriet.no
+  185.35.202.222                    2a02:ed06::222                                                                 tor-node002.hackeriet.no
+  185.35.202.223                    2a02:ed06::223                                                                 host002.hackeriet.no (capitol)
+  185.35.202.224                    2a02:ed06::224                                                                 matrix.hackeriet.no (krav)
+  185.35.202.225                    2a02:ed06::225                                                                 forum.hausmania.org
+  185.35.202.226                    2a02:ed06::b1ac:b10c                                                           (rediger.)hausmania.org
+  185.35.202.227                    2a02:ed06::227                                                                 nix.hackeriet.no (krav)
+  185.35.202.228                                                                                                   wificontroller.hackeriet.no (hackeriet/lasse)
+  185.35.202.229                                                                                                   loki.heplaphon.com (heplaphon)
+  185.35.202.230 - 185.35.202.233                                                                                  DHCP-scope for installation
+  185.35.202.234                    ?                                                                              hostname: blokk (owned by head)
+  185.35.202.235                    ?                                                                              in use by head
+  185.35.202.237                    2a02:ed06::237                                                                 fw.tla.wtf (kfh)
+  185.35.202.238                    no ipv6                                                                        hausmania ext
+  185.35.202.239                    no ipv6                                                                        customer V behind gi0/41 on pit-sw
+  185.35.202.240/28 (.240-.254)                                                                                    VPN/NAT-scope (RESERVED)
+                                    2a02:ed06::2039                                                                backup.hackeriet.no (capitol)
+                                    2a02:ed06:8::1                                                                 k8s01.hackeriet.no (capitol)
+</code></pre>
+<h3><a class="header" href="#vlan150--100150024--2a02ed0615064--intkubernetes--pit-sw-" id="vlan150--100150024--2a02ed0615064--intkubernetes--pit-sw-">vlan150 | 10.0.150.0/24 | 2a02:ed06:150:/64 | int,kubernetes | pit-sw |</a></h3>
+<p>Unrouted internal network for Kubernetes. DHCP server on pit-sw.</p>
+<h3><a class="header" href="#vlan200--nat64-ipv6-only--2a02ed0621296--nat64hackeriet--routed-at-babelhackerietno-" id="vlan200--nat64-ipv6-only--2a02ed0621296--nat64hackeriet--routed-at-babelhackerietno-">vlan200 | NAT64 IPv6 only | 2a02:ed06:212::/96 | nat64,hackeriet | routed at babel.hackeriet.no |</a></h3>
+<p>babel.hackeriet.no runs a NAT64 and DNS64 service. Clients on this vlan
+needing IPv4 get NAT64 access, and IPv6 access is routed normally by
+babel.</p>
+<h3><a class="header" href="#vlan230--100230024--2a02ed0623064--mgmthackeriet--pit-sw-" id="vlan230--100230024--2a02ed0623064--mgmthackeriet--pit-sw-">vlan230 | 10.0.230.0/24 | 2a02:ed06:230:/64 | mgmt,hackeriet | pit-sw |</a></h3>
+<pre><code>  10.0.120.10   -   hp pdu (needs to be renumbered)
+</code></pre>
+<p>vlan230 is the IPMI/BMC network.</p>
+<h2><a class="header" href="#configuration-examples" id="configuration-examples">Configuration examples</a></h2>
+<p>For /etc/network/interfaces:</p>
+<pre><code>iface eth0 inet static
+address 185.35.202.XXX
+netmask 255.255.255.192
+gateway 185.35.202.193
+dns-nameserver 91.205.184.10 91.205.187.202 2001:4860:4860:0:0:0:0:8888
+
+iface eth0 inet6 static
+address 2a02:ed06::XXX
+netmask 64
+gateway 2a02:ed06::1
+</code></pre>
+<p>For /etc/sysctl.d/10-ipv6-privacy.conf</p>
+<pre><code>
+1.  Turn off IPv6 privacy extension in order to keep IP addresses for
+    outgoing
+2.  traffic static (see
+    https://github.com/hackeriet/hackeriet.no/wiki/IP-plan)
+    net.ipv6.conf.all.use\_tempaddr = 0
+    net.ipv6.conf.default.use\_tempaddr = 0
+</code></pre>
+<p>Fiber connection dump:</p>
+<pre><code>Nett: 185.35.202.192/26
+Linknett: 185.35.202.72/30 .73 Blix .74 Hackeriet
+Linknett: 2a02:20c8:3460::/126 ::1 Blix ::2 Hackeriet
+Nett: 2a02:ed06::/32
+nameserver 91.205.184.10
+nameserver 91.205.187.202
+</code></pre>
+<p>Enable LLDPd.</p>
+<pre><code>apt install lldpd
+service start lldpd
+</code></pre>
+<h2><a class="header" href="#linknett" id="linknett">Linknett</a></h2>
+<p>2a02:ed06:1000::/48 - link networks, use ::1/126 and ::2/126.</p>
+<pre><code>  -          10.0.127.12/30   2A02:ED06:1000:1::1/64   link,hole-sw,star     -
+  vlan2101   10.0.127.16/30   2a02:ed06:1000:2::1/64   link,hole-sw,pit-sw   -
+</code></pre>
+<h1><a class="header" href="#network-connectivity-issues" id="network-connectivity-issues">Network connectivity issues</a></h1>
+<h2><a class="header" href="#code-of-conduct-1" id="code-of-conduct-1">&quot;Code of conduct&quot;</a></h2>
+<p>When the network is down in the cellar, we should send a message or
+phone people that are dependent on our connectivity.</p>
+<ul>
+<li>Remember that these people are also paying for connectivity,
+therfore should be regarded as customers, so adjust to this well
+known relationship pattern ;-)</li>
+<li>Some of these contacts are critical for our well-being in the sense
+that they have a role that enables us to operate in the wider sense,
+so keeping a good tone and a friendly relationship is critical for
+the whole project.</li>
+<li>Don't act as BOFH.</li>
+</ul>
+<p>Note: these people don't read email too often. Don't expect them to.
+Sometimes is so much better to send an SMS. Specify that you are from
+Hackeriet. Use simple language.</p>
+<ul>
+<li>Ping #oslohackerspace @ chat.freenode.net upon incidents - it will
+act as war room.</li>
+</ul>
+<h2><a class="header" href="#contact" id="contact">Contact</a></h2>
+<h3><a class="header" href="#hausmania" id="hausmania">Hausmania</a></h3>
+<ul>
+<li>Anne Thomassen - daglig leder - 416 62 671</li>
+</ul>
+<p>More contact points on <a href="https://www.hausmania.org/kontakt">Hausmania's
+website</a></p>
+<h3><a class="header" href="#vestbredden--h40" id="vestbredden--h40">Vestbredden / H40</a></h3>
+<ul>
+<li>Dominik (English speaking)</li>
+<li>Nora</li>
+</ul>
+<h3><a class="header" href="#blix-solutions" id="blix-solutions">Blix solutions</a></h3>
+<p>Internet/ISP support: 21 55 56 66 / support@blix.com / http://www.blix.com</p>
+<p>Check this page to see if there are problems with our provider
+https://www.blix.com/sections/info/driftsmeldinger</p>
+<p>These guys are upstream, so they don't need to be informed about
+down-times. They will inform us since they are our provider.</p>
+<ul>
+<li>Take contact with them only when you are 100% sure that the problem
+is not on our side. Always check that our infrastructure is
+correctly powered and functional before taking contact.</li>
+<li>Be prepared and logged in to the right machines and have all the
+available information at hand, so that you can describe the problem
+extensively and precisely.</li>
+<li>Again, regard these people as enablers of our project. So be nice
+and &quot;professional&quot; ( even if it's impossible for you ).</li>
+</ul>
+<p>I've included the bylaws in Norwegian below. If someone has time to
+translate them to english as well, it would be appreciated.</p>
+<hr />
+<h1><a class="header" href="#vedtekter-for-hackeriet" id="vedtekter-for-hackeriet">Vedtekter for Hackeriet</a></h1>
+<p>§ 1 Foreningens navn</p>
+<p>Foreningens navn er Hackeriet og den ble stiftet 2009\-12\-17.</p>
+<p>§ 2 Foretakets tilholdssted</p>
+<p>Foretaket har sitt tilholdssted i Oslo kommune.</p>
+<p>§ 3 Formål</p>
+<p>Forenings formål er å:</p>
+<p>Tilby et fysisk sted som medlemmer og andre inviterte kan bruke for å
+leke med teknologi, skape, lære og samarbeide.<br />
+Være en partipolitisk uavhengig og teknologinøytral organisasjon som
+fremmer kreativitet og åpenhetskultur.<br />
+Være en egalitær organisasjon der avgjørelser tas av de som er villige
+til å gjøre jobben.<br />
+Være en ideell organisasjon. Eventuelt overskudd skal reinvesteres etter
+foreningens formål.<br />
+§ 4 Juridisk person</p>
+<p>Foreningen er en frittstående juridisk person med upersonlig og
+begrenset ansvar for gjeld.</p>
+<p>§ 5 Medlemmer</p>
+<p>Alle som støtter foreningens formål og betaler medlemskontigent kan være
+medlem.</p>
+<p>§ 6 Stemmerett og valgbarhet</p>
+<p>Alle medlemmer har stemmerett. Alle er valgbare til tillitsverv i
+foreningen.</p>
+<p>§ 7 Kontingent</p>
+<p>Kontingenten fastsettes av årsmøtet.</p>
+<p>§ 8 Tillitsvalgtes godtgjørelse</p>
+<p>Tillitsvalgte skal ikke motta honorar for sine verv utover refusjon for
+faktiske, dokumenterte utgifter. Tapt arbeidsfortjeneste regnes ikke som
+utgift.</p>
+<p>§ 9 Årsmøte</p>
+<p>Årsmøtet, som holdes hvert år i april måned, er foreningens høyeste
+myndighet.</p>
+<p>Årsmøtet innkalles av styret med minst 1 måneds varsel, direkte til
+medlemmene og eventuelt ved kunngjøring i andre media. Forslag som skal
+behandles på årsmøtet skal være sendt til styret senest 2 uker før
+årsmøtet. Fullstendig saksliste må være tilgjengelig for medlemmene
+senest 1 uke før årsmøtet.</p>
+<p>Alle medlemmer har adgang til årsmøtet. Årsmøtet kan invitere andre
+personer og/eller media til å være til stede.</p>
+<p>Årsmøtet er vedtaksført med det antall stemmeberettigede medlemmer som
+møter. Ingen har mer enn én stemme, og stemmegivning kan ikke skje ved
+fullmakt.</p>
+<p>På årsmøtet kan ikke behandles forslag om vedtektsendring som ikke er
+oppført på sakslisten senest 1 uke før årsmøtet. Andre saker kan
+behandles og avgjøres når 2/3 av de fremmøtte krever det. Slik
+beslutning kan bare tas i forbindelse med godkjenning av sakslisten.</p>
+<p>Årsmøtet ledes av valgt ordstyrer. Ordstyreren behøver ikke å være
+medlem av foreningen.</p>
+<p>§ 10 Stemmegivning på årsmøtet</p>
+<p>Med mindre annet er bestemt skal et vedtak for å være gyldig være
+truffet med alminnelig flertall av de avgitte stemmene. Blanke stemmer
+skal ikke anses som avgitt, men skal protokollføres i årsmøtets referat.</p>
+<p>Når det ved valg skal velges flere ved en avstemming, må alle for å
+anses valgt ha mer enn halvparten av de avgitte stemmene. Dette gjelder
+ikke ved valg av vararepresentanter. Hvis ikke tilstrekkelig mange
+kandidater har oppnådd dette i første omgang, anses de valgt som har
+fått mer enn halvparten av stemmene. Det foretas så bundet omvalg mellom
+de øvrige kandidatene, og etter denne avstemmingen anses de valgt som
+har fått flest stemmer. Er det ved omvalg stemmelikhet, avgjøres valget
+av ordstyreren.</p>
+<p>§ 11 Årsmøtets oppgaver</p>
+<p>Årsmøtet skal:</p>
+<p>Behandle styrets årsmelding</p>
+<p>Behandle foreningens regnskap</p>
+<p>Behandle innkomne forslag</p>
+<p>Fastsette kontingent</p>
+<p>Vedta foreningens budsjett</p>
+<p>Velge:</p>
+<p>a) Styrets leder</p>
+<p>b) Styremedlemmer</p>
+<p>c) evt. Revisor og dennes stedfortreder</p>
+<p>§ 12 Ekstraordinære årsmøter</p>
+<p>Ekstraordinære årsmøter holdes når styret bestemmer det, når minst en
+tidel av de stemmeberettigede medlemmene krever det, eller når revisor
+krever det.</p>
+<p>Det innkalles på samme måte som for ordinære årsmøter, med minst 14
+dagers varsel.</p>
+<p>Ekstraordinært årsmøte kan bare behandle og ta avgjørelse i de sakene
+som er kunngjort i innkallingen.</p>
+<p>§ 13 Styret</p>
+<p>Foreningen ledes av et styre på mellom 4 og 6 medlemmer. Styret er
+høyeste myndighet mellom årsmøtene.</p>
+<p>Styret skal:</p>
+<p>Iverksette årsmøtets bestemmelser.</p>
+<p>Oppnevne etter behov komiteer/utvalg/personer for spesielle oppgaver og
+utarbeide instruks for disse.</p>
+<p>Administrere og føre nødvendig kontroll med foreningens økonomi i
+henhold til de til enhver tid gjeldende instrukser og bestemmelser.</p>
+<p>Representere foreningen utad.</p>
+<p>Enten 3 styremedlemmer i fellesskap, eller styreleder og 1 styremedlem i
+fellesskap, har prokura og signaturrett for foreningen.</p>
+<p>Foreningen skal informeres skriftlig minimum 2 dager før prokura eller
+signaturrett benyttes.</p>
+<p>Styret skal holde møte når et flertall av styremedlemmene forlanger det.</p>
+<p>Styret er vedtaksført når et flertall av styrets medlemmer er til stede.
+Vedtak fattes med flertall av de avgitte stemmene. Ved stemmelikhet
+teller møtelederens stemme dobbelt.</p>
+<p>§ 14 Vedtektsendring</p>
+<p>Endringer i disse vedtekter kan bare foretas på ordinært eller
+ekstraordinært årsmøte etter å ha vært på sakslisten, og det kreves 2/3
+flertall av de avgitte stemmene.</p>
+<p>§ 15 Oppløsning</p>
+<p>Oppløsning av foreningen kan bare behandles på ordinært årsmøte. Blir
+oppløsning vedtatt med minst 2/3 flertall, innkalles ekstraordinært
+årsmøte minst 3 måneder senere der oppløsningen iverksettes etter et
+bekreftende avstemming med 2/3 flertall.</p>
+<p>Sammenslutning med andre foreninger anses ikke som oppløsning. Vedtak om
+sammenslutning og nødvendige vedtektsendringer i tilknytning til dette
+treffes i samsvar med bestemmelsene om vedtektsendring, jfr. §14 15.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+
+                
+            </nav>
+
+        </div>
+
+        
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3001");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload(true); // force reload from server (not from cache)
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+        
+
+        
+
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+        
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+        
+        
+
+    </body>
+</html>

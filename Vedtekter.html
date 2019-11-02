@@ -1,0 +1,328 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Bylaws - Hackeriet Documentation</title>
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body class="light">
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            document.body.className = theme;
+            document.querySelector('html').className = theme + ' js';
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li><a href="Code-of-Conduct.html"><strong aria-hidden="true">1.</strong> Code of Conduct</a></li><li><a href="IRC-Chat.html"><strong aria-hidden="true">2.</strong> Public Chat Room (IRC)</a></li><li><a href="Membership.html"><strong aria-hidden="true">3.</strong> Membership</a></li><li><a href="Money.html"><strong aria-hidden="true">4.</strong> Payment</a></li><li><a href="CFP.html"><strong aria-hidden="true">5.</strong> Presentations and Workshops</a></li><li><a href="Donations.html"><strong aria-hidden="true">6.</strong> Financial and Hardware Donations</a></li><li><a href="Food.html"><strong aria-hidden="true">7.</strong> Nearby Restaurants and Shops</a></li><li><a href="Parking.html"><strong aria-hidden="true">8.</strong> Parking</a></li><li><a href="Waste-Disposal.html"><strong aria-hidden="true">9.</strong> Waste Disposal</a></li><li><a href="Nettlaug.html"><strong aria-hidden="true">10.</strong> Server Room</a></li><li><a href="Door.html"><strong aria-hidden="true">11.</strong> Doors and Access</a></li><li><ol class="section"><li><a href="How-to-add-a-Keycard.html"><strong aria-hidden="true">11.1.</strong> How to add a key to the door system</a></li><li><a href="How-to-reset-the-door.html"><strong aria-hidden="true">11.2.</strong> How to restart the door system</a></li></ol></li><li><a href="IP-plan.html"><strong aria-hidden="true">12.</strong> IP Plan</a></li><li><a href="Contactlist.html"><strong aria-hidden="true">13.</strong> Contact list</a></li><li><a href="Vedtekter.html" class="active"><strong aria-hidden="true">14.</strong> Bylaws</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar" class="menu-bar">
+                    <div id="menu-bar-sticky-container">
+                        <div class="left-buttons">
+                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                                <i class="fa fa-paint-brush"></i>
+                            </button>
+                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                                <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            </ul>
+                            
+                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            
+                        </div>
+
+                        <h1 class="menu-title">Hackeriet Documentation</h1>
+
+                        <div class="right-buttons">
+                            <a href="print.html" title="Print this book" aria-label="Print this book">
+                                <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <p>I've included the bylaws in Norwegian below. If someone has time to
+translate them to english as well, it would be appreciated.</p>
+<hr />
+<h1><a class="header" href="#vedtekter-for-hackeriet" id="vedtekter-for-hackeriet">Vedtekter for Hackeriet</a></h1>
+<p>§ 1 Foreningens navn</p>
+<p>Foreningens navn er Hackeriet og den ble stiftet 2009\-12\-17.</p>
+<p>§ 2 Foretakets tilholdssted</p>
+<p>Foretaket har sitt tilholdssted i Oslo kommune.</p>
+<p>§ 3 Formål</p>
+<p>Forenings formål er å:</p>
+<p>Tilby et fysisk sted som medlemmer og andre inviterte kan bruke for å
+leke med teknologi, skape, lære og samarbeide.<br />
+Være en partipolitisk uavhengig og teknologinøytral organisasjon som
+fremmer kreativitet og åpenhetskultur.<br />
+Være en egalitær organisasjon der avgjørelser tas av de som er villige
+til å gjøre jobben.<br />
+Være en ideell organisasjon. Eventuelt overskudd skal reinvesteres etter
+foreningens formål.<br />
+§ 4 Juridisk person</p>
+<p>Foreningen er en frittstående juridisk person med upersonlig og
+begrenset ansvar for gjeld.</p>
+<p>§ 5 Medlemmer</p>
+<p>Alle som støtter foreningens formål og betaler medlemskontigent kan være
+medlem.</p>
+<p>§ 6 Stemmerett og valgbarhet</p>
+<p>Alle medlemmer har stemmerett. Alle er valgbare til tillitsverv i
+foreningen.</p>
+<p>§ 7 Kontingent</p>
+<p>Kontingenten fastsettes av årsmøtet.</p>
+<p>§ 8 Tillitsvalgtes godtgjørelse</p>
+<p>Tillitsvalgte skal ikke motta honorar for sine verv utover refusjon for
+faktiske, dokumenterte utgifter. Tapt arbeidsfortjeneste regnes ikke som
+utgift.</p>
+<p>§ 9 Årsmøte</p>
+<p>Årsmøtet, som holdes hvert år i april måned, er foreningens høyeste
+myndighet.</p>
+<p>Årsmøtet innkalles av styret med minst 1 måneds varsel, direkte til
+medlemmene og eventuelt ved kunngjøring i andre media. Forslag som skal
+behandles på årsmøtet skal være sendt til styret senest 2 uker før
+årsmøtet. Fullstendig saksliste må være tilgjengelig for medlemmene
+senest 1 uke før årsmøtet.</p>
+<p>Alle medlemmer har adgang til årsmøtet. Årsmøtet kan invitere andre
+personer og/eller media til å være til stede.</p>
+<p>Årsmøtet er vedtaksført med det antall stemmeberettigede medlemmer som
+møter. Ingen har mer enn én stemme, og stemmegivning kan ikke skje ved
+fullmakt.</p>
+<p>På årsmøtet kan ikke behandles forslag om vedtektsendring som ikke er
+oppført på sakslisten senest 1 uke før årsmøtet. Andre saker kan
+behandles og avgjøres når 2/3 av de fremmøtte krever det. Slik
+beslutning kan bare tas i forbindelse med godkjenning av sakslisten.</p>
+<p>Årsmøtet ledes av valgt ordstyrer. Ordstyreren behøver ikke å være
+medlem av foreningen.</p>
+<p>§ 10 Stemmegivning på årsmøtet</p>
+<p>Med mindre annet er bestemt skal et vedtak for å være gyldig være
+truffet med alminnelig flertall av de avgitte stemmene. Blanke stemmer
+skal ikke anses som avgitt, men skal protokollføres i årsmøtets referat.</p>
+<p>Når det ved valg skal velges flere ved en avstemming, må alle for å
+anses valgt ha mer enn halvparten av de avgitte stemmene. Dette gjelder
+ikke ved valg av vararepresentanter. Hvis ikke tilstrekkelig mange
+kandidater har oppnådd dette i første omgang, anses de valgt som har
+fått mer enn halvparten av stemmene. Det foretas så bundet omvalg mellom
+de øvrige kandidatene, og etter denne avstemmingen anses de valgt som
+har fått flest stemmer. Er det ved omvalg stemmelikhet, avgjøres valget
+av ordstyreren.</p>
+<p>§ 11 Årsmøtets oppgaver</p>
+<p>Årsmøtet skal:</p>
+<p>Behandle styrets årsmelding</p>
+<p>Behandle foreningens regnskap</p>
+<p>Behandle innkomne forslag</p>
+<p>Fastsette kontingent</p>
+<p>Vedta foreningens budsjett</p>
+<p>Velge:</p>
+<p>a) Styrets leder</p>
+<p>b) Styremedlemmer</p>
+<p>c) evt. Revisor og dennes stedfortreder</p>
+<p>§ 12 Ekstraordinære årsmøter</p>
+<p>Ekstraordinære årsmøter holdes når styret bestemmer det, når minst en
+tidel av de stemmeberettigede medlemmene krever det, eller når revisor
+krever det.</p>
+<p>Det innkalles på samme måte som for ordinære årsmøter, med minst 14
+dagers varsel.</p>
+<p>Ekstraordinært årsmøte kan bare behandle og ta avgjørelse i de sakene
+som er kunngjort i innkallingen.</p>
+<p>§ 13 Styret</p>
+<p>Foreningen ledes av et styre på mellom 4 og 6 medlemmer. Styret er
+høyeste myndighet mellom årsmøtene.</p>
+<p>Styret skal:</p>
+<p>Iverksette årsmøtets bestemmelser.</p>
+<p>Oppnevne etter behov komiteer/utvalg/personer for spesielle oppgaver og
+utarbeide instruks for disse.</p>
+<p>Administrere og føre nødvendig kontroll med foreningens økonomi i
+henhold til de til enhver tid gjeldende instrukser og bestemmelser.</p>
+<p>Representere foreningen utad.</p>
+<p>Enten 3 styremedlemmer i fellesskap, eller styreleder og 1 styremedlem i
+fellesskap, har prokura og signaturrett for foreningen.</p>
+<p>Foreningen skal informeres skriftlig minimum 2 dager før prokura eller
+signaturrett benyttes.</p>
+<p>Styret skal holde møte når et flertall av styremedlemmene forlanger det.</p>
+<p>Styret er vedtaksført når et flertall av styrets medlemmer er til stede.
+Vedtak fattes med flertall av de avgitte stemmene. Ved stemmelikhet
+teller møtelederens stemme dobbelt.</p>
+<p>§ 14 Vedtektsendring</p>
+<p>Endringer i disse vedtekter kan bare foretas på ordinært eller
+ekstraordinært årsmøte etter å ha vært på sakslisten, og det kreves 2/3
+flertall av de avgitte stemmene.</p>
+<p>§ 15 Oppløsning</p>
+<p>Oppløsning av foreningen kan bare behandles på ordinært årsmøte. Blir
+oppløsning vedtatt med minst 2/3 flertall, innkalles ekstraordinært
+årsmøte minst 3 måneder senere der oppløsningen iverksettes etter et
+bekreftende avstemming med 2/3 flertall.</p>
+<p>Sammenslutning med andre foreninger anses ikke som oppløsning. Vedtak om
+sammenslutning og nødvendige vedtektsendringer i tilknytning til dette
+treffes i samsvar med bestemmelsene om vedtektsendring, jfr. §14 15.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="Contactlist.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a href="Contactlist.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+            </nav>
+
+        </div>
+
+        
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3001");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload(true); // force reload from server (not from cache)
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+        
+
+        
+
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>

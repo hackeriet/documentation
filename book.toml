@@ -1,9 +1,0 @@
-[book]
-authors = ["Hackeriet"]
-language = "en"
-multilingual = false
-src = "src"
-title = "Hackeriet Documentation"
-
-[build]
-create-missing = false

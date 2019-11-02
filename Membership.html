@@ -1,0 +1,303 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Membership - Hackeriet Documentation</title>
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body class="light">
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            document.body.className = theme;
+            document.querySelector('html').className = theme + ' js';
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li><a href="Code-of-Conduct.html"><strong aria-hidden="true">1.</strong> Code of Conduct</a></li><li><a href="IRC-Chat.html"><strong aria-hidden="true">2.</strong> Public Chat Room (IRC)</a></li><li><a href="Membership.html" class="active"><strong aria-hidden="true">3.</strong> Membership</a></li><li><a href="Money.html"><strong aria-hidden="true">4.</strong> Payment</a></li><li><a href="CFP.html"><strong aria-hidden="true">5.</strong> Presentations and Workshops</a></li><li><a href="Donations.html"><strong aria-hidden="true">6.</strong> Financial and Hardware Donations</a></li><li><a href="Food.html"><strong aria-hidden="true">7.</strong> Nearby Restaurants and Shops</a></li><li><a href="Parking.html"><strong aria-hidden="true">8.</strong> Parking</a></li><li><a href="Waste-Disposal.html"><strong aria-hidden="true">9.</strong> Waste Disposal</a></li><li><a href="Nettlaug.html"><strong aria-hidden="true">10.</strong> Server Room</a></li><li><a href="Door.html"><strong aria-hidden="true">11.</strong> Doors and Access</a></li><li><ol class="section"><li><a href="How-to-add-a-Keycard.html"><strong aria-hidden="true">11.1.</strong> How to add a key to the door system</a></li><li><a href="How-to-reset-the-door.html"><strong aria-hidden="true">11.2.</strong> How to restart the door system</a></li></ol></li><li><a href="IP-plan.html"><strong aria-hidden="true">12.</strong> IP Plan</a></li><li><a href="Contactlist.html"><strong aria-hidden="true">13.</strong> Contact list</a></li><li><a href="Vedtekter.html"><strong aria-hidden="true">14.</strong> Bylaws</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar" class="menu-bar">
+                    <div id="menu-bar-sticky-container">
+                        <div class="left-buttons">
+                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                                <i class="fa fa-paint-brush"></i>
+                            </button>
+                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                                <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            </ul>
+                            
+                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            
+                        </div>
+
+                        <h1 class="menu-title">Hackeriet Documentation</h1>
+
+                        <div class="right-buttons">
+                            <a href="print.html" title="Print this book" aria-label="Print this book">
+                                <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#hackeriet-membership" id="hackeriet-membership">Hackeriet membership</a></h1>
+<p>Hackeriet is a members-owned non-profit association. Members have a hand
+in the running of the organisation as well as 24/7 access to the space.</p>
+<p>Membership is paid monthly by standing order. Running an organisation
+like this in Oslo isn't cheap, so please play your dues on time. The
+space requires our members to contribute an average subscription of
+kr250/month to survive. For students, retirees or low income members the
+minimum subscription is kr 150/month.</p>
+<h2><a class="header" href="#membership-dues" id="membership-dues">Membership dues</a></h2>
+<ul>
+<li>Regular members: 250kr monthly</li>
+<li>Students : 150kr monthly</li>
+<li>Sponsorship membership: as much as you wish. Our suggestion is
+500kr/mo</li>
+</ul>
+<p>Pay by bank transfer to account number <strong>1254.05.75124</strong> and mark the
+transaction with your name.</p>
+<p>Supporting membership is for those who wish to support Hackeriet's
+activities financially. We can provide invoices for supporting members
+upon request. Contact finance - AT - hackeriet.no.</p>
+<h2><a class="header" href="#who-can-be-a-member" id="who-can-be-a-member">Who can be a member?</a></h2>
+<ul>
+<li>anyone with an active interest in hacking - in the wider sense</li>
+</ul>
+<h2><a class="header" href="#what-to-do-as-a-new-member" id="what-to-do-as-a-new-member">What to do as a new member?</a></h2>
+<ul>
+<li>come up with a good nickname for yourself</li>
+<li>jump on our IRC server, because that's where the buzz is (
+#oslohackerspace @ chat.freenode.net and matrix.org ). Consider
+following up 24/7 in a shell/muxer!</li>
+<li>get a membership card and a key to the building. Don't be shy, you
+should get those ASAP.</li>
+<li>come and use the space whenever you have time and will, you don't
+need anyone to do it.</li>
+<li>put a server or a pi in the [[nettlaug]] server room and get
+your dedicated IP-address.</li>
+<li>get inspiration / hydration as beer and Club Mate from the
+[[vending machine]].</li>
+<li>show up in person on Tuesdays and Saturdays, bring your laptop and
+whatever else you might want.</li>
+<li>arrange a talk - tell us about something you care about.</li>
+<li>host a workshop: show us something you can do, or something new
+you'd like to figure out together with others.</li>
+<li>organize an event of other nature. e.g. show a movie, organize a
+hackaton/CTF, play music on the stage... - It's your call!</li>
+</ul>
+<h3><a class="header" href="#what-do-i-get-for-the-fee--what-is-my-membership-fee-used-for" id="what-do-i-get-for-the-fee--what-is-my-membership-fee-used-for">What do I get for the fee / What is my membership fee used for?</a></h3>
+<p>Hackeriet exists for us to pool our resources, exchange experiences, let
+us teach and learn, share equipment and offer us a physical place to
+hang out together. To achieve this, we need funding.</p>
+<p>The membership fee is our primary source of funding and is currently
+used to pay rent, fund workshops and buy equipment that the members find
+useful at a hackerspace.</p>
+<p>While we encourage you to become a member, we don't require you to be
+one in order to visit us. Please drop by and see how it looks :)</p>
+<h3><a class="header" href="#full-members-get" id="full-members-get">Full members get</a></h3>
+<ul>
+<li>Their own storage space where you can store your project stuff.</li>
+<li>Voting rights at the general assembly meetings, as stated in our
+bylaws ([[Vedtekter]]).</li>
+<li>Right to participate in membership meetings, first Tuesday of every
+month.</li>
+<li>Membership card for unlocking doors and purchasing Club Mate from
+the vending machine all by yourself!</li>
+</ul>
+<h1><a class="header" href="#keys" id="keys">Keys</a></h1>
+<p>You need two keys:</p>
+<ul>
+<li>a key card, which opens the space itself, and</li>
+</ul>
+<!-- -->
+<ul>
+<li>a Hausmania key, which opens many doors at Hausmania, including the
+front door (at least until someone (<strong>you?</strong>) build more keycard
+stations).</li>
+</ul>
+<p>We produce our own keycards, but need to order the Hausmania keys.</p>
+<p>Email styret - AT - hackeriet.no and request a key, and we will order
+one for you. There is a 600kr deposit for keys, deposit is paid by bank
+transfer to Hackeriets main account (see [[Money]]).</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="IRC-Chat.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="Money.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a href="IRC-Chat.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a href="Money.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3001");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload(true); // force reload from server (not from cache)
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+        
+
+        
+
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>
